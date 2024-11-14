@@ -7,6 +7,7 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import Header from "~/components/Header";
+import Footer from "~/components/Footer";
 
 import stylesheet from "~/tailwind.css?url";
 
@@ -26,6 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <Header></Header>
         {children}
+        <Footer></Footer>
         <ScrollRestoration />
         <Scripts />
       </body>
