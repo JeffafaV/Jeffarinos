@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <ul className="flex flex-row justify-between max-w-7xl mx-auto items-center border-b-2">
       {/* left side items */}
-      <li className="flex flex-row gap-3 items-center">
+      <li className="flex flex-row gap-3 items-center basis-0 grow">
         <img src="/images/pizza.png" alt="Pizza Logo" className="size-10"></img>
         <span>Deals</span>
         {/* drop down menu */}
@@ -19,8 +19,8 @@ const Header = () => {
         <p className="font-bold text-2xl">WE HAVE THE SHMEATS</p>
       </li>
 
-      {/* right items */}
-      <li className="flex flex-row gap-3">
+      {/* right side items */}
+      <li className="flex flex-row gap-3 basis-0 grow justify-end">
         {/* sign in button */}
         <button className="flex flex-row items-center">
           <svg
