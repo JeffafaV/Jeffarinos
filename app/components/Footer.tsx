@@ -11,9 +11,9 @@ const Footer = () => {
           <div className="flex flex-col">
             <span className="text-lg">Menu</span>
             <ul>
-              <li>Pizza</li>
-              <li>Sides</li>
-              <li>Pasta</li>
+              <li>Entrées</li>
+              <li>Appetizers</li>
+              <li>Drinks</li>
             </ul>
           </div>
           <div className="flex flex-col">
@@ -46,8 +46,10 @@ const Footer = () => {
           <div className="flex flex-col">
             <span className="text-lg">Customer Service</span>
             <ul>
-              <li>Contact us</li>
               <li>FAQs</li>
+              <li>Terms of service</li>
+              <li>Privacy policy</li>
+              <li>Contact us</li>
             </ul>
           </div>
         </div>
