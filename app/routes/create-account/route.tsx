@@ -1,14 +1,43 @@
-import { ActionFunctionArgs } from "@remix-run/node";
+import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { Form } from "@remix-run/react";
+import { MongoClient } from "mongodb";
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const mongoURI = process.env.MONGODB_URI || "";
+  const client = new MongoClient(mongoURI);
+
+  const database = client.db("database");
+  const users = database.collection("users");
+  const query = { username: "bobby" };
+  const user = await users.findOne(query);
+
+  if (!user) {
+    return "error";
+  }
+  console.log(user);
+
+  return null;
+}
 
 export async function action({ request }: ActionFunctionArgs) {
   let formData = await request.formData();
+  const firstName = formData.get("firstName");
+  const lastName = formData.get("lastName");
+  const userName = formData.get("username");
+  const email = formData.get("email");
   const password = formData.get("password");
-
-  if (!password) {
+  // TODO insert user as document in the users collection in mongodb
+  if (!firstName || !lastName || !userName || !email || !password) {
+    // all form data must not be null
     return null;
   } else {
   }
+  const mongoURI = process.env.MONGODB_URI || "";
+  const client = new MongoClient(mongoURI);
+
+  const database = client.db("database");
+  const users = database.collection("users");
+
   // const bcrypt = require("bcrypt");
   const bcrypt = await import("bcrypt");
   const saltRounds = 10;
@@ -17,11 +46,23 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const match = await bcrypt.compare(password.toString(), tempHash);
 
-  if (match) {
-    console.log("Hash matches password");
-  } else {
-    console.log("What did I do wrong?");
-  }
+  const userDoc = {
+    first_name: firstName,
+    last_name: lastName,
+    username: userName,
+    email: email,
+    password: password,
+  };
+
+  const result = await users.insertOne(userDoc);
+
+  console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
+  // if (match) {
+  //   console.log("Hash matches password");
+  // } else {
+  //   console.log("What did I do wrong?");
+  // }
 
   // TODO put the hash in mongoDB database
   return null;
