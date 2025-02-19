@@ -51,7 +51,7 @@ export async function action({ request }: ActionFunctionArgs) {
     last_name: lastName,
     username: userName,
     email: email,
-    password: password,
+    password: tempHash,
   };
 
   const result = await users.insertOne(userDoc);
