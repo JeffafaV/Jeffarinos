@@ -16,7 +16,7 @@ export default function Index() {
       <div className="flex flex-row items-center">
         <div className="flex flex-col gap-2 text-center my-10">
           <p className="font-bold text-7xl">YOU PROVIDE THE MONEYS</p>
-          <p className="font-bold text-7xl bg-red-600 text-white">
+          <p className="font-bold text-7xl bg-red-600 text-white pb-2.5">
             WE PROVIDE THE SHMEATS
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function Index() {
 
       <div className="flex flex-row border-2 border-red-600 mx-auto w-fit gap-6 rounded-xl p-3 shadow-xl">
         <span className="text-5xl border-r p-1">Start Here</span>
-        <button className="text-5xl bg-red-600 text-white rounded-xl p-1">
+        <button className="text-5xl bg-red-600 text-white rounded-xl p-1 pb-2.5">
           Menu
         </button>
       </div>
@@ -58,11 +58,15 @@ export default function Index() {
 
       {/* featured grid */}
       <div className="flex flex-row gap-5 justify-center">
-        <div className="w-[350px] h-80 border border-red-600">
+        <div className="w-[350px]">
           <p>hello</p>
         </div>
-        <div className="w-[350px] h-80 border border-red-600"></div>
-        <div className="w-[350px] h-80 border border-red-600"></div>
+        <div className="w-[350px]">
+          <img src="/images/appetizers.webp" />
+        </div>
+        <div className="w-[350px]">
+          <img src="/images/drinks.webp" />
+        </div>
       </div>
       <div></div>
     </div>
